@@ -7,7 +7,9 @@ RUN apt-get update && \
     ca-certificates \
     curl \
     gpg \
-    procps \ 
+    procps \
+    mtr \
+    iputils-tracepath \
     iptables-persistent \
     iputils-ping \
     tcpdump \

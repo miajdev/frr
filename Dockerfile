@@ -8,8 +8,8 @@ RUN apt-get update && \
     curl \
     gpg \
     procps \
-    mtr \
-    iputils-tracepath \
+    traceroute \
+    mtr-tiny \
     iptables-persistent \
     iputils-ping \
     tcpdump \

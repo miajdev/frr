@@ -25,6 +25,7 @@ echo "rocommunity public" > /etc/snmp/snmpd.conf
 # Start services
 service ssh start
 service snmpd start
+service lldpd start
 service frr start
 
 exec "$@"

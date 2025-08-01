@@ -6,7 +6,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     ca-certificates curl gpg procps traceroute mtr-tiny iptables-persistent \
     iputils-ping tcpdump bridge-utils iproute2 lsb-release \
-    openssh-server snmpd telnetd \
+    openssh-server snmpd telnetd iperf3 \
     && curl -s https://deb.frrouting.org/frr/keys.gpg | gpg --dearmor > /usr/share/keyrings/frrouting.gpg \
     && echo "deb [signed-by=/usr/share/keyrings/frrouting.gpg] https://deb.frrouting.org/frr $(lsb_release -s -c) frr-stable" > /etc/apt/sources.list.d/frr.list \
     && apt-get update && \

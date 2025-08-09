@@ -17,14 +17,19 @@ done
 usermod -aG frr,frrvty noc
 usermod -s /bin/vtysh noc
 
-# Set passwords
+# Set passwords (default to "noc" if not specified)
 if [[ -n "${NOC_USER_PASSWORD}" ]]; then
-    ENCRYPTED=$(openssl passwd -6 "${NOC_USER_PASSWORD}")
-    for user in snmp ssh telnet noc; do
-        usermod -p "$ENCRYPTED" "$user"
-    done
-    echo "[+] Passwords set for service users"
+    PASSWORD="${NOC_USER_PASSWORD}"
+    echo "[+] Using provided password for service users"
+else
+    PASSWORD="noc"
+    echo "[!] WARNING: Using default password 'noc' for service users"
 fi
+
+ENCRYPTED=$(openssl passwd -6 "${PASSWORD}")
+for user in snmp ssh telnet noc; do
+    usermod -p "$ENCRYPTED" "$user"
+done
 
 # Configure SNMP
 echo "rocommunity public" > /etc/snmp/snmpd.conf
